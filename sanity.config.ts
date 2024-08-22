@@ -22,13 +22,21 @@ import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./src/sanity/schema";
 import { assist } from '@sanity/assist'
+import { presentationTool } from '@sanity/presentation'
 
 export default defineConfig({
   name: "project-name",
   title: "Project Name",
   projectId,
   dataset,
-  plugins: [structureTool(), visionTool(), assist(),],
+  plugins: [
+    structureTool(), 
+    visionTool(), 
+    assist(), 
+    presentationTool({
+      previewUrl: location.origin,
+    })
+  ],
   schema: {
     types: schemaTypes,
   },
