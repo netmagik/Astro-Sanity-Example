@@ -20,7 +20,7 @@ if (!projectId || !dataset) {
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
-import { schemaTypes } from "./schema";
+import { schemaTypes } from "./src/sanity/schema";
 import { assist } from '@sanity/assist'
 
 export default defineConfig({
