@@ -7,7 +7,7 @@ import { getPosts } from "../utils/sanity";
 const posts = await getPosts();
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Astro Playground">
   <section>
     {posts.length ? posts.map((post) => <Card post={post} />) : <Welcome />}
   </section>
