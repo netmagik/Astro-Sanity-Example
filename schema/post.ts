@@ -32,7 +32,20 @@ export default defineType({
       type: 'image',
       options: {
         hotspot: true,
+        aiAssist: {
+          imageDescriptionField: 'alt',
+        },
       },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alternative Text",
+          //required
+          validation: Rule => Rule.required(),
+        },
+      ],
+  
     }),
     defineField({
       name: 'body',
