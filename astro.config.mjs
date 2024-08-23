@@ -23,7 +23,7 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   // Hybrid+adapter is required to support embedded Sanity Studio
-  output: "server",
+  output: "hybrid",
   adapter: vercel(),
   integrations: [sanity({
     projectId,
