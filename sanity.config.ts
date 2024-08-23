@@ -23,6 +23,7 @@ import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./src/sanity/schema";
 import { assist } from '@sanity/assist'
 import { presentationTool } from '@sanity/presentation'
+import { resolve } from "./src/utils/resolve";
 
 export default defineConfig({
   name: "project-name",
@@ -34,6 +35,7 @@ export default defineConfig({
     visionTool(), 
     assist(), 
     presentationTool({
+      resolve,
       previewUrl: location.origin,
     })
   ],
