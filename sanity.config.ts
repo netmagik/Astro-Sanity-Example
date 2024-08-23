@@ -25,6 +25,15 @@ import { assist } from '@sanity/assist'
 import { presentationTool } from '@sanity/presentation'
 import { resolve } from "./src/utils/resolve";
 
+// Load environment variables
+const { VITE_DEV_PREVIEW_URL, VITE_PROD_PREVIEW_URL } = import.meta.env;
+
+// Determine the preview URL based on the environment
+const isProduction = import.meta.env.PROD;
+const previewUrl = isProduction
+  ? VITE_PROD_PREVIEW_URL
+  : VITE_DEV_PREVIEW_URL || location.origin;
+
 export default defineConfig({
   name: "project-name",
   title: "Project Name",
@@ -36,7 +45,7 @@ export default defineConfig({
     assist(), 
     presentationTool({
       resolve,
-      previewUrl: location.origin,
+      previewUrl,
     })
   ],
   schema: {
