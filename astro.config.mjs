@@ -22,6 +22,11 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    optimizeDeps: {
+      exclude: ['chunk-3ELGFXP2.js'], 
+    },
+  },
   // Hybrid+adapter is required to support embedded Sanity Studio
   output: "hybrid",
   adapter: vercel(),

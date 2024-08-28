@@ -2,9 +2,13 @@
 import Card from "../components/Card.astro";
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
-import { getPosts } from "../utils/sanity";
+import { loadQuery } from "../sanity/lib/load-query";
+import type { Post } from "../utils/sanity";
+import { getPosts } from "../utils/queries";
 
-const posts = await getPosts();
+const { data: posts } = await loadQuery<Post[]>({
+  query: getPosts,
+});
 ---
 
 <Layout title="Astro Playground">
