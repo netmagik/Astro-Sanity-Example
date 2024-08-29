@@ -21,8 +21,8 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./src/sanity/schema";
-import { assist } from '@sanity/assist'
-import { presentationTool } from '@sanity/presentation'
+import { assist } from "@sanity/assist";
+import { presentationTool } from "@sanity/presentation";
 import { resolve } from "./src/utils/resolve";
 
 // Load environment variables
@@ -40,13 +40,13 @@ export default defineConfig({
   projectId,
   dataset,
   plugins: [
-    structureTool(), 
-    visionTool(), 
-    assist(), 
+    structureTool(),
+    visionTool(),
+    assist(),
     presentationTool({
       resolve,
       previewUrl,
-    })
+    }),
   ],
   schema: {
     types: schemaTypes,

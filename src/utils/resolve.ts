@@ -15,8 +15,7 @@ export const resolve: PresentationPluginOptions["resolve"] = {
             title: doc?.title || "Untitled",
             href: `/post/${doc?.slug}`,
           },
-        //   { title: "Posts", href: '/'},
-        {title: "Posts", href: location.origin}
+          { title: "Posts", href: location.origin },
         ],
       }),
     }),
