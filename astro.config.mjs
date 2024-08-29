@@ -24,7 +24,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   vite: {
     optimizeDeps: {
-      exclude: ['chunk-3ELGFXP2.js'], 
+      exclude: ['chunk-3ELGFXP2.js', 'chunk-JD2VGPCS.js'], 
     },
   },
   // Hybrid+adapter is required to support embedded Sanity Studio
