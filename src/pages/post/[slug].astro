@@ -6,12 +6,14 @@ import { urlFor } from "../../utils/image";
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "../../sanity/lib/load-query"
 import type { Post } from "../../utils/sanity";
+import ImageWithOverlay from "../../components/ImageWithOverlay";
 
 export async function getStaticPaths() {
   const { data: posts } = await loadQuery<SanityDocument[]>({
     query: `*[_type == "post"]`,
   })
 return posts.map(({ slug }) => {
+  console.log('posts', posts)
   return {
     params: { slug: slug.current },
   }
@@ -25,9 +27,10 @@ const { data: post } = await loadQuery<Post>({
 });
 ---
 
+
 <Layout title={post.title!}>
   <section class="post">
-    {
+    <!-- {
       post.mainImage ? (
         <img
           class="post__cover"
@@ -37,7 +40,13 @@ const { data: post } = await loadQuery<Post>({
       ) : (
         <div class="post__cover--none" />
       )
-    }
+    } -->
+    {post.mainImage ? (
+      <!-- Pass the image asset reference (image ID) to the React component -->
+      <ImageWithOverlay client:load imageId={post.mainImage.asset._ref} />
+    ) : (
+      <div class="post__cover--none" />
+    )}
     <div class="post__container">
       <h1 class="post__title">{post.title}</h1>
       <p class="post__excerpt">{post.excerpt}</p>
