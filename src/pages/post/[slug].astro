@@ -4,24 +4,32 @@ import Layout from "../../layouts/Layout.astro";
 import { formatDate } from "../../utils";
 import { urlFor } from "../../utils/image";
 import type { SanityDocument } from "@sanity/client";
-import { loadQuery } from "../../sanity/lib/load-query"
+import { loadQuery } from "../../sanity/lib/load-query";
 import type { Post } from "../../utils/sanity";
+import { createDataAttribute } from "@sanity/visual-editing";
 
 export async function getStaticPaths() {
   const { data: posts } = await loadQuery<SanityDocument[]>({
     query: `*[_type == "post"]`,
-  })
-return posts.map(({ slug }) => {
-  return {
-    params: { slug: slug.current },
-  }
-});
+  });
+  return posts.map(({ slug }) => {
+    return {
+      params: { slug: slug.current },
+    };
+  });
 }
 
 const { params } = Astro;
 const { data: post } = await loadQuery<Post>({
   query: `*[_type == "post" && slug.current == $slug][0]`,
   params,
+});
+
+// Create the data-sanity attribute for the image using createDataAttribute
+const attr = createDataAttribute({
+  id: post._id, // The ID of the main post document
+  type: "post", // The document type
+  path: ["mainImage"], // The path to the image field in the document
 });
 ---
 
@@ -30,6 +38,7 @@ const { data: post } = await loadQuery<Post>({
     {
       post.mainImage ? (
         <img
+          data-sanity={attr()}
           class="post__cover"
           src={urlFor(post.mainImage).url()}
           alt="Cover image"
@@ -38,6 +47,7 @@ const { data: post } = await loadQuery<Post>({
         <div class="post__cover--none" />
       )
     }
+
     <div class="post__container">
       <h1 class="post__title">{post.title}</h1>
       <p class="post__excerpt">{post.excerpt}</p>

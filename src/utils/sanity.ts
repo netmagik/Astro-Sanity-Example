@@ -17,6 +17,7 @@ import type { ImageAsset, Slug } from "@sanity/types";
 // }
 
 export interface Post {
+  _id: string;
   _type: "post";
   _createdAt: string;
   title?: string;
