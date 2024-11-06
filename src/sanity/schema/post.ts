@@ -23,6 +23,7 @@ export default defineType({
     defineField({
       name: 'author',
       title: 'Author',
+      description: 'Who wrote this post?',
       type: 'reference',
       to: [{type: 'author'}],
     }),
