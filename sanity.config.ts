@@ -22,7 +22,7 @@ import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./src/sanity/schema";
 import { assist } from "@sanity/assist";
-import { presentationTool } from "@sanity/presentation";
+import { presentationTool } from "sanity/presentation"
 import { resolve } from "./src/utils/resolve";
 
 // Load environment variables
