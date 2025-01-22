@@ -36,7 +36,7 @@ export default defineConfig({
     },
   },
   // Hybrid+adapter is required to support embedded Sanity Studio
-  // output: "static",
+   output: "server",
   adapter: vercel(),
   integrations: [sanity({
     projectId,
