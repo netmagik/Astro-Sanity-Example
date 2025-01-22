@@ -32,7 +32,7 @@ export default defineConfig({
     },
   },
     optimizeDeps: {
-      exclude: ['chunk-3ELGFXP2.js', 'chunk-JD2VGPCS.js'], 
+      exclude: ['chunk-3ELGFXP2.js', 'chunk-JD2VGPCS.js', 'chunk-AOPXVOHO.js'], 
     },
   },
   // Hybrid+adapter is required to support embedded Sanity Studio
