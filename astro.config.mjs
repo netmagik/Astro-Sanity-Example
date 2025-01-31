@@ -36,8 +36,8 @@ export default defineConfig({
     },
   },
   // Hybrid+adapter is required to support embedded Sanity Studio
-   output: "server",
-  adapter: vercel(),
+  //  output: "server",
+  // adapter: vercel(),
   integrations: [sanity({
     projectId,
     dataset,
@@ -48,6 +48,7 @@ export default defineConfig({
     useCdn: false,
     // `false` if you want to ensure fresh data
     apiVersion: "2024-01-17" // Set to date of setup to use the latest API version
-  }), react() // Required for Sanity Studio
+  }), 
+  react() // Required for Sanity Studio
   ]
 });
