@@ -26,11 +26,11 @@ export default defineConfig({
     define: {
     'process.env': {},
   },
-  resolve: {
-    alias: {
-      process: 'process/browser',
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     process: 'process/browser',
+  //   },
+  // },
     optimizeDeps: {
       exclude: ['chunk-3ELGFXP2.js', 'chunk-JD2VGPCS.js', 'chunk-AOPXVOHO.js'], 
     },
