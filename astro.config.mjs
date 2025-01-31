@@ -18,17 +18,25 @@ import react from "@astrojs/react";
 
 // Change this depending on your hosting provider (Vercel, Netlify etc)
 // https://docs.astro.build/en/guides/server-side-rendering/#adding-an-adapter
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
+    define: {
+    'process.env': {},
+  },
+  resolve: {
+    alias: {
+      process: 'process/browser',
+    },
+  },
     optimizeDeps: {
-      exclude: ['chunk-3ELGFXP2.js', 'chunk-JD2VGPCS.js'], 
+      exclude: ['chunk-3ELGFXP2.js', 'chunk-JD2VGPCS.js', 'chunk-AOPXVOHO.js'], 
     },
   },
   // Hybrid+adapter is required to support embedded Sanity Studio
-  output: "hybrid",
+   output: "server",
   adapter: vercel(),
   integrations: [sanity({
     projectId,
@@ -39,7 +47,7 @@ export default defineConfig({
     },
     useCdn: false,
     // `false` if you want to ensure fresh data
-    apiVersion: "2023-07-24" // Set to date of setup to use the latest API version
+    apiVersion: "2024-01-17" // Set to date of setup to use the latest API version
   }), react() // Required for Sanity Studio
   ]
 });
